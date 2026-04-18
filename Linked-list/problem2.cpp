@@ -110,7 +110,7 @@ int main(){
     l1.Insertfornt(2);
     l1.Insertfornt(1);
     l1.insertgivenpos(2,4);
-    l1.deletegivenpos(1);
+    l1.deletegivenpos(3);
     l1.display();
    
 }
