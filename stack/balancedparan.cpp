@@ -58,23 +58,44 @@ class stacklist{
         }
         
     }
+    bool isbalanced(string exp){
+        for(char c : exp){
+            if(c == '(' || c == '[' || c == '{'){
+                push(c);
+            }else if(c == ')'){
+                if(isEmpty() || top() != '('){
+                    return false;
+                }
+                pop();
+            }else if(c == ']'){
+                if(isEmpty() || top() != '['){
+                    return false;
+                }
+                pop();
+            }else if(c == '}'){
+                if(isEmpty() || top() != '{'){
+                    return false;
+                }
+                pop();
+            }
+        }
+        return isEmpty();
+    }
     bool isEmpty(){
         return tail==NULL;
     }
 };
 
+
 int main(){
     stacklist sl;
-    string str;
-    cout<<"Enter Name for reversing it:";
-    cin>>str;
-    for(char c:str){
-        sl.push(c);
+    string exp;
+    cout << "Enter expression: ";
+    cin >> exp;
+    if(sl.isbalanced(exp)){
+        cout << "Balanced" << endl;
+    }else{
+        cout << "Not balanced" << endl;
     }
-    while (!sl.isEmpty())
-    {
-        cout << sl.top();
-        sl.pop();
-    }
-   
+    return 0;
 }
